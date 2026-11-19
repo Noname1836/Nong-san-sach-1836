@@ -1,0 +1,814 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nông Sản Xanh | Sạch từ nguồn</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f9f3;
+            color: #243b2a;
+        }
+
+        /* THANH MENU */
+        header {
+            background: white;
+            padding: 16px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 10px #00000008;
+        }
+
+        .logo {
+            color: #287b43;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #354b39;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            color: #278344;
+        }
+
+        .cart-button {
+            background: #287b43;
+            color: white;
+            border: none;
+            padding: 11px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        /* BANNER */
+        .hero {
+            margin: 25px auto;
+            width: 90%;
+            min-height: 330px;
+            padding: 50px;
+            border-radius: 20px;
+            background:
+                linear-gradient(90deg, #173c26ee, #173c2680),
+                url("https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1400&q=80");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 500px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+        .hero button {
+            background: #e8f5d8;
+            color: #245e35;
+            padding: 13px 22px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* KHU SẢN PHẨM */
+        .section {
+            width: 90%;
+            margin: 45px auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .section-title h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #708071;
+        }
+
+        /* TÌM KIẾM */
+        .tools {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        #search {
+            flex: 1;
+            min-width: 200px;
+            padding: 13px;
+            border: 1px solid #d5dfd3;
+            border-radius: 9px;
+            outline: none;
+        }
+
+        #category {
+            padding: 13px;
+            border: 1px solid #d5dfd3;
+            border-radius: 9px;
+            background: white;
+        }
+
+        /* DANH SÁCH */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px #0000000a;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 17px;
+        }
+
+        .card-content h3 {
+            margin-bottom: 8px;
+        }
+
+        .description {
+            color: #718071;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .price {
+            color: #278344;
+            font-size: 19px;
+            font-weight: bold;
+            margin-bottom: 13px;
+        }
+
+        .add-button {
+            width: 100%;
+            background: #287b43;
+            color: white;
+            padding: 11px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .add-button:hover {
+            background: #1d6134;
+        }
+
+        /* GIỎ HÀNG */
+        .cart-box {
+            background: white;
+            padding: 22px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border: 1px solid #e1e9df;
+        }
+
+        .cart-box h2 {
+            margin-bottom: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 12px 0;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .cart-item button {
+            border: none;
+            background: #ffe8e8;
+            color: #a52b2b;
+            padding: 5px 9px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .total {
+            margin-top: 18px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #287b43;
+        }
+
+        /* GIỚI THIỆU */
+        .about {
+            background: #eaf3e5;
+            padding: 35px;
+            border-radius: 15px;
+            line-height: 1.8;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #204c2e;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+            margin-top: 50px;
+            line-height: 1.8;
+        }
+
+        /* ĐIỆN THOẠI */
+        @media (max-width: 700px) {
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav {
+                width: 100%;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 7px;
+            }
+
+            .hero {
+                padding: 30px 22px;
+                min-height: 280px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .card img {
+                height: 150px;
+            }
+
+            .card-content {
+                padding: 12px;
+            }
+
+            .section-title h2 {
+                font-size: 24px;
+            }
+
+            .about {
+                padding: 22px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .card img {
+                height: 220px;
+            }
+        }
+    @media screen and (max-width: 600px) {
+    .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .products img {
+        max-width: 100%;
+        height: 130px;
+        object-fit: cover;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+}</style>
+</head>
+
+<body>
+
+    <!-- MENU -->
+    <header>
+        <div class="logo">🌱 NÔNG SẢN XANH</div>
+
+        <nav>
+            <a href="#home">Trang chủ</a>
+            <a href="#products">Sản phẩm</a>
+            <a href="#about">Giới thiệu</a>
+        </nav>
+
+        <button class="cart-button" onclick="goToCart()">
+            🛒 Giỏ hàng (<span id="cart-count">0</span>)
+        </button>
+    </header>
+
+    <!-- BANNER -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Sạch từ nguồn<br>Khỏe mỗi ngày</h1>
+
+            <p>
+                Mang đến những sản phẩm nông sản tươi ngon,
+                nguồn gốc rõ ràng và thân thiện với môi trường.
+            </p>
+
+            <button onclick="goToProducts()">
+                Khám phá sản phẩm
+            </button>
+        </div>
+    </section>
+
+    <!-- SẢN PHẨM -->
+    <section class="section" id="products">
+
+        <div class="section-title">
+            <h2>Sản phẩm của chúng tôi</h2>
+            <p>Nông sản tươi ngon – Giá cả hợp lý</p>
+        </div>
+
+        <div class="tools">
+            <input
+                type="text"
+                id="search"
+                placeholder="🔍 Tìm sản phẩm..."
+                oninput="renderProducts()"
+            >
+
+            <select id="category" onchange="renderProducts()">
+                <option value="all">Tất cả sản phẩm</option>
+                <option value="vegetable">Rau củ</option>
+                <option value="fruit">Trái cây</option>
+                <option value="local">Đặc sản</option>
+            </select>
+        </div>
+
+        <div class="products" id="product-list"></div>
+
+    </section>
+
+    <!-- GIỎ HÀNG -->
+    <section class="section" id="cart">
+        <div class="cart-box">
+            <h2>🛒 Giỏ hàng của bạn</h2>
+
+            <div id="cart-list">
+                Chưa có sản phẩm nào.
+            </div>
+
+            <div class="total" id="total">
+                Tổng tiền: 0đ
+            </div>
+        </div>
+    </section>
+
+    <!-- GIỚI THIỆU -->
+    <section class="section" id="about">
+        <div class="about">
+            <h2>🌿 Về Nông Sản Xanh</h2>
+
+            <p>
+                Nông Sản Xanh là ý tưởng kinh doanh của nhóm 3,
+                lớp 11A9, trong dự án học tập môn Giáo dục Kinh tế
+                và Pháp luật.
+            </p>
+
+            <p>
+                Chúng tôi hướng đến việc giới thiệu các sản phẩm
+                nông sản địa phương, nâng cao ý thức về nguồn gốc
+                thực phẩm và khuyến khích tiêu dùng thân thiện
+                với môi trường.
+            </p>
+        </div>
+    </section>
+
+    <!-- CUỐI TRANG -->
+    <footer>
+        <h3>🌱 NÔNG SẢN XANH</h3>
+
+        <p>Sạch từ nguồn – Khỏe mỗi ngày</p>
+
+        <p>Dự án học tập – Nhóm 3 – Lớp 11A9</p>
+
+        <p>Website mô phỏng kinh doanh, không thực hiện thanh toán thật.</p>
+    </footer>
+
+    <script>
+
+        // DANH SÁCH SẢN PHẨM
+        const products = [
+            {
+                id: 1,
+                name: "Cà rốt",
+                category: "vegetable",
+                price: 18000,
+                unit: "kg",
+                description: "Cà rốt tươi, phù hợp chế biến nhiều món ăn.",
+                image: "https://images.unsplash.com/photo-1445282768818-728615cc910a?auto=format&fit=crop&w=600&q=80"
+            },
+
+            {
+                id: 2,
+                name: "Bông cải xanh",
+                category: "vegetable",
+                price: 25000,
+                unit: "kg",
+                description: "Rau xanh tươi ngon, phù hợp bữa ăn gia đình.",
+                image: "https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=600&q=80"
+            },
+
+            {
+                id: 3,
+                name: "Cà chua",
+                category: "vegetable",
+                price: 20000,
+                unit: "kg",
+                description: "Cà chua tươi dùng chế biến món ăn.",
+                image: "https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=600&q=80"
+            },
+
+            {
+                id: 4,
+                name: "Chuối",
+                category: "fruit",
+                price: 22000,
+                unit: "kg",
+                description: "Chuối tươi, tiện lợi cho bữa ăn nhẹ.",
+                image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=600&q=80"
+            },
+
+            {
+                id: 5,
+                name: "Xoài",
+                category: "fruit",
+                price: 30000,
+                unit: "kg",
+                description: "Xoài thơm ngon, trái cây theo mùa.",
+                image: "https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=600&q=80"
+            },
+
+            {
+                id: 6,
+                name: "Thanh long",
+                category: "fruit",
+                price: 25000,
+                unit: "kg",
+                description: "Thanh long tươi, vị ngọt thanh.",
+                image: "./images/thanh-long/thanh-long.jpg"
+            },
+
+            {
+                id: 7,
+                name: "Bánh tráng Tây Ninh",
+                category: "local",
+                price: 25000,
+                unit: "bịch",
+                description: "Đặc sản địa phương được đóng gói.",
+                image: "images/banh-trang/banh-trang.jpg"
+            },
+
+            {
+                id: 8,
+                name: "Muối tôm Tây Ninh",
+                category: "local",
+                price: 20000,
+                unit: "hũ",
+                description: "Đặc sản Tây Ninh dùng chấm trái cây.",
+                image: "images/muoi-tom/muoi-tom.jpg"
+            },
+
+            {
+                id: 9,
+                name: "Xoài sấy",
+                category: "local",
+                price: 35000,
+                unit: "gói",
+                description: "Sản phẩm nông sản chế biến.",
+                image: "images/xoai-say/xoai-say.jpg"
+            },
+        
+    {
+        id: 101,
+        name: "Khoai lang",
+        category: "vegetable",
+        price: 18000,
+        unit: "kg",
+        description: "Khoai lang ngọt bùi, giàu dinh dưỡng.",
+        image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        id: 102,
+        name: "Dưa leo",
+        category: "vegetable",
+        price: 15000,
+        unit: "kg",
+        description: "Dưa leo tươi mát, thích hợp làm salad.",
+        image: "https://images.unsplash.com/photo-1604977042946-1eecc30f269e?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        id: 103,
+        name: "Khoai tây",
+        category: "vegetable",
+        price: 22000,
+        unit: "kg",
+        description: "Khoai tây tươi, chế biến được nhiều món.",
+        image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        id: 104,
+        name: "Cam tươi",
+        category: "fruit",
+        price: 30000,
+        unit: "kg",
+        description: "Cam mọng nước, vị ngọt thanh.",
+        image: "https://images.unsplash.com/photo-1547514701-42782101795e?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        id: 105,
+        name: "Dưa hấu",
+        category: "fruit",
+        price: 18000,
+        unit: "kg",
+        description: "Dưa hấu đỏ mọng, giải nhiệt ngày hè.",
+        image: "https://images.unsplash.com/photo-1563114773-84221bd62daa?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        id: 106,
+        name: "Bơ sáp",
+        category: "fruit",
+        price: 45000,
+        unit: "kg",
+        description: "Bơ sáp béo thơm, giàu chất dinh dưỡng.",
+        image: "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        id: 107,
+        name: "Ổi xanh",
+        category: "fruit",
+        price: 20000,
+        unit: "kg",
+        description: "Ổi giòn ngọt, thích hợp ăn tươi.",
+        image: "https://images.unsplash.com/photo-1536511132770-e5058c7e8c46?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        id: 108,
+        name: "Dứa tươi",
+        category: "fruit",
+        price: 25000,
+        unit: "quả",
+        description: "Dứa thơm ngon, dùng làm nước ép.",
+        image: "https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=600&q=80"
+    },
+];
+
+        // GIỎ HÀNG
+        let cart = [];
+
+        // ĐỊNH DẠNG TIỀN VIỆT NAM
+        function formatMoney(number) {
+            return number.toLocaleString("vi-VN") + "đ";
+        }
+
+        // HIỂN THỊ SẢN PHẨM
+        function renderProducts() {
+
+            const list = document.getElementById("product-list");
+
+            const searchText =
+                document.getElementById("search").value.toLowerCase();
+
+            const category =
+                document.getElementById("category").value;
+
+            const filtered = products.filter(product => {
+
+                const matchesSearch =
+                    product.name.toLowerCase().includes(searchText);
+
+                const matchesCategory =
+                    category === "all" || product.category === category;
+
+                return matchesSearch && matchesCategory;
+            });
+
+            list.innerHTML = "";
+
+            if (filtered.length === 0) {
+                list.innerHTML = "<p>Không tìm thấy sản phẩm.</p>";
+                return;
+            }
+
+            filtered.forEach(product => {
+
+                list.innerHTML += `
+                    <div class="card">
+
+                        <img
+                            src="${product.image}"
+                            alt="${product.name}"
+                        >
+
+                        <div class="card-content">
+
+                            <h3>${product.name}</h3>
+
+                            <p class="description">
+                                ${product.description}
+                            </p>
+
+                            <div class="price">
+                                ${formatMoney(product.price)}/${product.unit}
+                            </div>
+
+                            <button
+                                class="add-button"
+                                onclick="addToCart(${product.id})"
+                            >
+                                + Thêm vào giỏ hàng
+                            </button>
+
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // THÊM VÀO GIỎ
+        function addToCart(id) {
+
+            const product = products.find(item => item.id === id);
+
+            const existing = cart.find(item => item.id === id);
+
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({
+                    ...product,
+                    quantity: 1
+                });
+            }
+
+            renderCart();
+
+            alert("Đã thêm " + product.name + " vào giỏ hàng!");
+        }
+
+        // XÓA SẢN PHẨM
+        function removeFromCart(id) {
+
+            cart = cart.filter(item => item.id !== id);
+
+            renderCart();
+        }
+
+        // HIỂN THỊ GIỎ HÀNG
+       
+ // THAY DOI SO LUONG SAN PHAM
+function changeQuantity(id, amount) {
+
+    const item = cart.find(product => product.id === id);
+
+    if (!item) return;
+
+    item.quantity += amount;
+
+    if (item.quantity <= 0) {
+        cart = cart.filter(product => product.id !== id);
+    }
+
+    renderCart();
+}
+
+
+// HIEN THI GIO HANG
+function renderCart() {
+
+    const cartList = document.getElementById("cart-list");
+    const cartCount = document.getElementById("cart-count");
+    const totalElement = document.getElementById("total");
+
+    let total = 0;
+    let count = 0;
+
+    cartList.innerHTML = "";
+
+    if (cart.length === 0) {
+        cartList.innerHTML = "Chưa có sản phẩm nào.";
+    }
+
+    cart.forEach(item => {
+
+        total += item.price * item.quantity;
+        count += item.quantity;
+
+        cartList.innerHTML += `
+            <div class="cart-item">
+
+                <div>
+                    <strong>${item.name}</strong>
+                    <br>
+                    Giá: ${formatMoney(item.price)}
+                    <br>
+                    Số lượng: ${item.quantity}
+                    <br>
+                    Thành tiền:
+                    <strong>${formatMoney(item.price * item.quantity)}</strong>
+                </div>
+
+                <div style="display:flex; gap:8px; align-items:center">
+
+                    <button onclick="changeQuantity(${item.id}, -1)">
+                        −
+                    </button>
+
+                    <strong>${item.quantity}</strong>
+
+                    <button onclick="changeQuantity(${item.id}, 1)">
+                        +
+                    </button>
+
+                    <button onclick="removeFromCart(${item.id})">
+                        Xóa
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+    });
+
+    cartCount.innerText = count;
+
+    totalElement.innerText =
+        "Tổng tiền: " + formatMoney(total);
+}
+
+
+        // ĐI ĐẾN SẢN PHẨM
+        function goToProducts() {
+
+            document.getElementById("products")
+                .scrollIntoView({ behavior: "smooth" });
+        }
+
+        // ĐI ĐẾN GIỎ HÀNG
+        function goToCart() {
+
+            document.getElementById("cart")
+                .scrollIntoView({ behavior: "smooth" });
+        }
+
+        // CHẠY WEBSITE
+        renderProducts();
+
+        renderCart();
+
+    </script>
+
+</body>
+</html>
