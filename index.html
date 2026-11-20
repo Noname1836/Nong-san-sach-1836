@@ -1147,16 +1147,26 @@ function saveCart() {
             <button class="close-modal" onclick="closeTraceModal()">Đóng lại</button>
         </div>
     </div>
-// BIẾN LƯU SỐ TIỀN ĐÓNG GÓP QUỸ SỐNG XANH
-        let greenFundContribution = 0;
+<!-- 1. PHẦN GIAO DIỆN HTML ĐẶT TRƯỚC -->
+    <section class="green-fund-section" style="max-width: 1200px; margin: 40px auto; padding: 30px; background: #f4f9f1; border-radius: 15px; border: 2px dashed #287b43; text-align: center;">
+        <h2 style="color: #287b43; margin-bottom: 15px;">💚 Quỹ Sống Xanh - Lan Tỏa Giá Trị Việt</h2>
+        <p style="color: #555; max-width: 700px; margin: 0 auto 20px auto; font-size: 15px; line-height: 1.6;">
+            Mỗi sản phẩm đặc sản Trảng Bàng, Tây Ninh bạn chọn không chỉ mang hương vị quê hương mà còn đóng góp trực tiếp vào quỹ trồng rừng và hỗ trợ nông dân sản xuất hữu cơ. Cùng nhóm 3 (11A9) kiến tạo tương lai xanh bền vững!
+        </p>
+        
+        <div style="background: white; display: inline-block; padding: 20px 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+            <p style="font-weight: bold; margin-bottom: 10px; color: #333;">Chọn mức đóng góp tự nguyện cùng đơn hàng:</p>
+            <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 15px; flex-wrap: wrap;">
+                <button onclick="setFundAmount(5000)" class="fund-btn" style="padding: 8px 15px; border: 1px solid #287b43; background: white; color: #287b43; border-radius: 6px; cursor: pointer; font-weight: bold;">5.000đ</button>
+                <button onclick="setFundAmount(10000)" class="fund-btn" style="padding: 8px 15px; border: 1px solid #287b43; background: white; color: #287b43; border-radius: 6px; cursor: pointer; font-weight: bold;">10.000đ</button>
+                <button onclick="setFundAmount(20000)" class="fund-btn" style="padding: 8px 15px; border: 1px solid #287b43; background: white; color: #287b43; border-radius: 6px; cursor: pointer; font-weight: bold;">20.000đ</button>
+                <button onclick="setFundAmount(50000)" class="fund-btn" style="padding: 8px 15px; border: 1px solid #287b43; background: white; color: #287b43; border-radius: 6px; cursor: pointer; font-weight: bold;">50.000đ</button>
+            </div>
+            <p style="font-size: 14px; color: #e65100; font-weight: bold;" id="fund-status">Bạn đã chọn đóng góp: 0đ cho Quỹ Sống Xanh 🌱</p>
+        </div>
+    </section>
 
-        function setFundAmount(amount) {
-            greenFundContribution = amount;
-            document.getElementById("fund-status").innerText = `Cảm ơn bạn! Đã chọn đóng góp: ${amount.toLocaleString()}đ vào Quỹ Sống Xanh 🌱`;
-            
-            // Hiệu ứng thông báo nhỏ xíu sinh động khi chọn
-            alert(`Tuyệt vời! Bạn đã thêm ${amount.toLocaleString()}đ vào Quỹ Sống Xanh cùng Nhóm 3 - 11A9.`);
-        }
+    <!-- 2. TOÀN BỘ HÀM JAVASCRIPT ĐẶT Ở DƯỚI CÙNG -->
     <script>
         // MỞ POPUP TRUY XUẤT NGUỒN GỐC
         function openTraceModal(id) {
@@ -1183,24 +1193,14 @@ function saveCart() {
         function closeTraceModal() {
             document.getElementById("trace-modal").style.display = "none";
         }
+
+        // HÀM XỬ LÝ QUỸ SỐNG XANH
+        let greenFundContribution = 0;
+        function setFundAmount(amount) {
+            greenFundContribution = amount;
+            document.getElementById("fund-status").innerText = `Cảm ơn bạn! Đã chọn đóng góp: ${amount.toLocaleString()}đ vào Quỹ Sống Xanh 🌱`;
+            alert(`Tuyệt vời! Bạn đã thêm ${amount.toLocaleString()}đ vào Quỹ Sống Xanh cùng Nhóm 3 - 11A9.`);
+        }
     </script>
-<!-- KHU VỰC ĐÓNG GÓP QUỸ SỐNG XANH (CSR) -->
-    <section class="green-fund-section" style="max-width: 1200px; margin: 40px auto; padding: 30px; background: #f4f9f1; border-radius: 15px; border: 2px dashed #287b43; text-align: center;">
-        <h2 style="color: #287b43; margin-bottom: 15px;">💚 Quỹ Sống Xanh - Lan Tỏa Giá Trị Việt</h2>
-        <p style="color: #555; max-width: 700px; margin: 0 auto 20px auto; font-size: 15px; line-height: 1.6;">
-            Mỗi sản phẩm đặc sản Trảng Bàng, Tây Ninh bạn chọn không chỉ mang hương vị quê hương mà còn đóng góp trực tiếp vào quỹ trồng rừng và hỗ trợ nông dân sản xuất hữu cơ. Cùng nhóm 3 (11A9) kiến tạo tương lai xanh bền vững!
-        </p>
-        
-        <div style="background: white; display: inline-block; padding: 20px 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-            <p style="font-weight: bold; margin-bottom: 10px; color: #333;">Chọn mức đóng góp tự nguyện cùng đơn hàng:</p>
-            <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 15px; flex-wrap: wrap;">
-                <button onclick="setFundAmount(5000)" class="fund-btn" style="padding: 8px 15px; border: 1px solid #287b43; background: white; color: #287b43; border-radius: 6px; cursor: pointer; font-weight: bold;">5.000đ</button>
-                <button onclick="setFundAmount(10000)" class="fund-btn" style="padding: 8px 15px; border: 1px solid #287b43; background: white; color: #287b43; border-radius: 6px; cursor: pointer; font-weight: bold;">10.000đ</button>
-                <button onclick="setFundAmount(20000)" class="fund-btn" style="padding: 8px 15px; border: 1px solid #287b43; background: white; color: #287b43; border-radius: 6px; cursor: pointer; font-weight: bold;">20.000đ</button>
-                <button onclick="setFundAmount(50000)" class="fund-btn" style="padding: 8px 15px; border: 1px solid #287b43; background: white; color: #287b43; border-radius: 6px; cursor: pointer; font-weight: bold;">50.000đ</button>
-            </div>
-            <p style="font-size: 14px; color: #e65100; font-weight: bold;" id="fund-status">Bạn đã chọn đóng góp: 0đ cho Quỹ Sống Xanh 🌱</p>
-        </div>
-    </section>
 </body>
 </html>
