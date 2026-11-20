@@ -1128,26 +1128,7 @@ function saveCart() {
 
     </script>
 
-    <!-- CỬA SỔ POPUP TRUY XUẤT NGUỒN GỐC -->
-    <div class="modal-overlay" id="trace-modal" onclick="closeTraceModal()">
-        <div class="modal-box" onclick="event.stopPropagation()">
-            <h3>🔍 Truy xuất nguồn gốc sản phẩm</h3>
-            <p id="trace-name" style="font-weight:bold; font-size:18px; color:#e65100;"></p>
-            
-            <div class="modal-info">
-                <p><strong>🌱 Vùng trồng/Sản xuất:</strong> <span id="trace-farm"></span></p>
-                <p><strong>📅 Ngày thu hoạch/Đóng gói:</strong> Hôm nay (Tươi mới 100%)</p>
-                <p><strong>🏅 Chứng nhận:</strong> Đạt chuẩn an toàn VietGAP</p>
-                <p><strong>🚚 Đơn vị phân phối:</strong> Nông Sản Xanh - Lớp 11A9</p>
-            </div>
-
-            <img id="trace-qr" src="" alt="Mã QR truy xuất" style="width:130px; height:130px; margin-bottom:10px; border:1px solid #ddd; padding:5px; border-radius:8px;">
-            <p style="font-size:12px; color:#718071; margin-bottom:15px;">Quét mã QR để kiểm tra nhật ký canh tác điện tử</p>
-            
-            <button class="close-modal" onclick="closeTraceModal()">Đóng lại</button>
-        </div>
-    </div>
-<!-- 1. PHẦN GIAO DIỆN HTML ĐẶT TRƯỚC -->
+   <!-- KHU VỰC ĐÓNG GÓP QUỸ SỐNG XANH (CSR) -->
     <section class="green-fund-section" style="max-width: 1200px; margin: 40px auto; padding: 30px; background: #f4f9f1; border-radius: 15px; border: 2px dashed #287b43; text-align: center;">
         <h2 style="color: #287b43; margin-bottom: 15px;">💚 Quỹ Sống Xanh - Lan Tỏa Giá Trị Việt</h2>
         <p style="color: #555; max-width: 700px; margin: 0 auto 20px auto; font-size: 15px; line-height: 1.6;">
@@ -1166,7 +1147,7 @@ function saveCart() {
         </div>
     </section>
 
-    <!-- 2. TOÀN BỘ HÀM JAVASCRIPT ĐẶT Ở DƯỚI CÙNG -->
+    <!-- TOÀN BỘ HÀM JAVASCRIPT ĐẶT Ở DƯỚI CÙNG -->
     <script>
         // MỞ POPUP TRUY XUẤT NGUỒN GỐC
         function openTraceModal(id) {
