@@ -329,6 +329,167 @@
                 overflow-x: hidden;
             }
         }
+    /* CHĂM SÓC KHÁCH HÀNG */
+        .support-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #e1e9df;
+            box-shadow: 0 3px 12px #0000000a;
+            margin-top: 30px;
+        }
+
+        .support-box h2 {
+            margin-bottom: 10px;
+            color: #287b43;
+        }
+
+        .support-box > p {
+            color: #718071;
+            margin-bottom: 20px;
+        }
+
+        .support-channels {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .support-item {
+            background: #f7f9f3;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #287b43;
+        }
+
+        .support-item p {
+            margin-top: 5px;
+            color: #354b39;
+        }
+
+        .support-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: #eaf3e5;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .support-form h3 {
+            font-size: 18px;
+            color: #243b2a;
+        }
+
+        .support-form input, 
+        .support-form textarea {
+            padding: 11px;
+            border: 1px solid #d5dfd3;
+            border-radius: 8px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .support-form textarea {
+            resize: vertical;
+            height: 90px;
+        }
+
+        .support-form button {
+            background: #287b43;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .support-form button:hover {
+            background: #1d6134;
+        }
+
+        @media (max-width: 700px) {
+            .support-channels {
+                grid-template-columns: 1fr;
+            }
+        }
+    .features { width: 90%; margin: 25px auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.feature-item { background: white; padding: 20px; border-radius: 14px; display: flex; align-items: center; gap: 15px; box-shadow: 0 3px 10px #00000006; border: 1px solid #e6eee4; }
+.feature-icon { font-size: 32px; background: #eaf3e5; padding: 12px; border-radius: 12px; }
+.feature-item h4 { color: #287b43; margin-bottom: 4px; }
+.feature-item p { font-size: 13px; color: #6c7c6d; }
+@media (max-width: 768px) { .features { grid-template-columns: 1fr; } }
+    .checkout-form { margin-top: 22px; padding-top: 20px; border-top: 2px dashed #e1e9df; display: none; flex-direction: column; gap: 12px; }
+.checkout-form input { padding: 12px; border: 1px solid #d5dfd3; border-radius: 8px; outline: none; }
+.checkout-btn { background: #e65100; color: white; padding: 14px; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; }
+.checkout-btn:hover { background: #c64300; }
+/* NHÃN NỔI BẬT CHO COMBO / BÁN CHẠY */
+    .badge-hot {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: #e65100;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .card {
+        position: relative;
+    }
+    /* POPUP TRUY XUẤT NGUỒN GỐC */
+    .trace-btn {
+        width: 100%;
+        background: #eaf3e5;
+        color: #287b43;
+        padding: 9px;
+        border: 1px solid #287b43;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+    .trace-btn:hover { background: #d5ebd0; }
+    .modal-overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.6);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    .modal-box {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 400px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+    .modal-box h3 { color: #287b43; margin-bottom: 12px; }
+    .modal-info {
+        text-align: left;
+        background: #f7f9f3;
+        padding: 15px;
+        border-radius: 10px;
+        margin: 15px 0;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+    .close-modal {
+        background: #287b43;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+    }
     </style>
 </head>
 
@@ -340,7 +501,10 @@
 
         <nav>
             <a href="#home">Trang chủ</a>
+            <a href="#best-sellers">Bán chạy</a>
+            <a href="#combos">Combo</a>
             <a href="#products">Sản phẩm</a>
+            <a href="#support">Hỗ trợ</a>
             <a href="#about">Giới thiệu</a>
         </nav>
 
@@ -363,6 +527,20 @@
                 Khám phá sản phẩm
             </button>
         </div>
+    <section class="features">
+    <div class="feature-item">
+        <div class="feature-icon">🌿</div>
+        <div><h4>100% Nông sản sạch</h4><p>Thu hoạch trực tiếp tại vườn, đạt chuẩn an toàn.</p></div>
+    </div>
+    <div class="feature-item">
+        <div class="feature-icon">🚚</div>
+        <div><h4>Giao nhanh trong ngày</h4><p>Đảm bảo độ tươi ngon nhất khi đến tay bạn.</p></div>
+    </div>
+    <div class="feature-item">
+        <div class="feature-icon">🔄</div>
+        <div><h4>Đổi trả miễn phí</h4><p>Hoàn tiền 100% nếu sản phẩm không đạt chất lượng.</p></div>
+    </div>
+</section>
     </section>
 
     <!-- SẢN PHẨM -->
@@ -398,11 +576,50 @@
             </div>
 
             <div class="total" id="total">
-                Tổng tiền: 0đ
-            </div>
+            Tổng tiền: 0đ
+        </div>
+
+        <!-- Form chốt đơn hàng -->
+        <div class="checkout-form" id="checkout-form">
+            <h3>📦 Thông tin giao hàng</h3>
+            <input type="text" id="order-name" placeholder="Họ và tên người nhận (*)">
+            <input type="text" id="order-phone" placeholder="Số điện thoại liên hệ (*)">
+            <input type="text" id="order-address" placeholder="Địa chỉ giao hàng chi tiết (*)">
+            <button class="checkout-btn" onclick="placeOrder()">✅ Xác nhận đặt hàng</button>
+        </div>
         </div>
     </section>
 
+    <!-- CHĂM SÓC KHÁCH HÀNG -->
+    <section class="section" id="support">
+        <div class="support-box">
+            <h2>💬 Chăm sóc khách hàng & Hỗ trợ</h2>
+            <p>Bạn cần tư vấn về sản phẩm nông sản sạch hoặc hỗ trợ đặt hàng? Hãy liên hệ với chúng tôi qua các kênh dưới đây:</p>
+            
+            <div class="support-channels">
+                <div class="support-item">
+                    <strong>📞 Hotline / Zalo:</strong>
+                    <p>0912 736 883 (8:00 - 22:00)</p>
+                </div>
+                <div class="support-item">
+                    <strong>📧 Email:</strong>
+                    <p>bokhang709@gmail.com</p>
+                </div>
+                <div class="support-item">
+                    <strong>📍 Địa chỉ:</strong>
+                    <p>Trảng Bàng, Tây Ninh</p>
+                </div>
+            </div>
+
+            <div class="support-form">
+                <h3>Gửi thắc mắc cho chúng tôi</h3>
+                <input type="text" id="sup-name" placeholder="Họ và tên của bạn...">
+                <input type="text" id="sup-phone" placeholder="Số điện thoại...">
+                <textarea id="sup-msg" placeholder="Nội dung cần hỗ trợ..."></textarea>
+                <button onclick="sendSupport()">Gửi yêu cầu</button>
+            </div>
+        </div>
+    </section>
     <!-- GIỚI THIỆU -->
     <section class="section" id="about">
         <div class="about">
@@ -434,6 +651,23 @@
         <p>Website mô phỏng kinh doanh, không thực hiện thanh toán thật.</p>
     </footer>
 
+    <!-- 🌟 SẢN PHẨM BÁN CHẠY -->
+    <section class="section" id="best-sellers">
+        <div class="section-title">
+            <h2>🔥 Sản phẩm bán chạy</h2>
+            <p>Những nông sản được khách hàng yêu thích và lựa chọn nhiều nhất</p>
+        </div>
+        <div class="products" id="best-seller-list"></div>
+    </section>
+
+    <!-- 🎁 COMBO GÓI HOA QUẢ -->
+    <section class="section" id="combos">
+        <div class="section-title">
+            <h2>🎁 Combo gói hoa quả & Sức khỏe</h2>
+            <p>Giải pháp tiện lợi, tiết kiệm cho gia đình hoặc làm quà biếu</p>
+        </div>
+        <div class="products" id="combo-list"></div>
+    </section>
     <script>
 
         // DANH SÁCH SẢN PHẨM
@@ -598,10 +832,26 @@
                 description: "Dứa thơm ngon, dùng làm nước ép.",
                 image: "https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=600&q=80"
             },
+        {
+                id: 18,
+                name: "Combo Gia Đình Xanh",
+                category: "fruit",
+                price: 150000,
+                unit: "set",
+                description: "Gồm Xoài, Chuối, Thanh long và Cam tươi ngon chọn lọc.",
+                image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=600&q=80",
+                tag: "combo"
+            },
+        
         ];
 
         // GIỎ HÀNG
-        let cart = [];
+       // LẤY GIỎ HÀNG TỪ LOCALSTORAGE (Tránh mất khi tải lại trang)
+let cart = JSON.parse(localStorage.getItem("nongSanXanhCart")) || [];
+
+function saveCart() {
+    localStorage.setItem("nongSanXanhCart", JSON.stringify(cart));
+}
 
         // ĐỊNH DẠNG TIỀN VIỆT NAM
         function formatMoney(number) {
@@ -658,14 +908,12 @@
                             <div class="price">
                                 ${formatMoney(product.price)}/${product.unit}
                             </div>
-
-                            <button
-                                class="add-button"
-                                onclick="addToCart(${product.id})"
-                            >
-                                + Thêm vào giỏ hàng
-                            </button>
-
+                        <button class="trace-btn" onclick="openTraceModal(${product.id})">
+        🔍 Xem nguồn gốc
+    </button>
+    <button class="add-button" onclick="addToCart(${product.id})">
+        + Thêm vào giỏ hàng
+    </button>
                         </div>
                     </div>
                 `;
@@ -688,6 +936,7 @@
                 });
             }
 
+            saveCart();
             renderCart();
 
             alert("Đã thêm " + product.name + " vào giỏ hàng!");
@@ -698,6 +947,7 @@
 
             cart = cart.filter(item => item.id !== id);
 
+            saveCart();
             renderCart();
         }
 
@@ -716,71 +966,84 @@
                 cart = cart.filter(product => product.id !== id);
             }
 
+            saveCart();
             renderCart();
         }
 
 
-        // HIEN THI GIO HANG
+     // HIỂN THỊ GIỎ HÀNG & FORM ĐẶT HÀNG
         function renderCart() {
-
             const cartList = document.getElementById("cart-list");
             const cartCount = document.getElementById("cart-count");
             const totalElement = document.getElementById("total");
+            const checkoutForm = document.getElementById("checkout-form");
 
             let total = 0;
             let count = 0;
 
             cartList.innerHTML = "";
 
+            // Nếu giỏ hàng trống thì ẩn form đi, có hàng thì hiện form lên
             if (cart.length === 0) {
                 cartList.innerHTML = "Chưa có sản phẩm nào.";
+                if (checkoutForm) checkoutForm.style.display = "none";
+            } else {
+                if (checkoutForm) checkoutForm.style.display = "flex";
             }
 
             cart.forEach(item => {
-
                 total += item.price * item.quantity;
                 count += item.quantity;
 
                 cartList.innerHTML += `
-            <div class="cart-item">
+                    <div class="cart-item">
+                        <div>
+                            <strong>${item.name}</strong>
+                            <br>
+                            Giá: ${formatMoney(item.price)}
+                            <br>
+                            Số lượng: ${item.quantity}
+                            <br>
+                            Thành tiền:
+                            <strong>${formatMoney(item.price * item.quantity)}</strong>
+                        </div>
 
-                <div>
-                    <strong>${item.name}</strong>
-                    <br>
-                    Giá: ${formatMoney(item.price)}
-                    <br>
-                    Số lượng: ${item.quantity}
-                    <br>
-                    Thành tiền:
-                    <strong>${formatMoney(item.price * item.quantity)}</strong>
-                </div>
-
-                <div style="display:flex; gap:8px; align-items:center">
-
-                    <button onclick="changeQuantity(${item.id}, -1)">
-                        −
-                    </button>
-
-                    <strong>${item.quantity}</strong>
-
-                    <button onclick="changeQuantity(${item.id}, 1)">
-                        +
-                    </button>
-
-                    <button onclick="removeFromCart(${item.id})">
-                        Xóa
-                    </button>
-
-                </div>
-
-            </div>
-        `;
+                        <div style="display:flex; gap:8px; align-items:center">
+                            <button onclick="changeQuantity(${item.id}, -1)">−</button>
+                            <strong>${item.quantity}</strong>
+                            <button onclick="changeQuantity(${item.id}, 1)">+</button>
+                            <button onclick="removeFromCart(${item.id})">Xóa</button>
+                        </div>
+                    </div>
+                `;
             });
 
             cartCount.innerText = count;
+            totalElement.innerText = "Tổng tiền: " + formatMoney(total);
+        }
 
-            totalElement.innerText =
-                "Tổng tiền: " + formatMoney(total);
+        // HÀM XỬ LÝ KHI BẤM NÚT ĐẶT HÀNG
+        function placeOrder() {
+            const name = document.getElementById("order-name").value.trim();
+            const phone = document.getElementById("order-phone").value.trim();
+            const address = document.getElementById("order-address").value.trim();
+
+            if (!name || !phone || !address) {
+                alert("Vui lòng điền đầy đủ Họ tên, Số điện thoại và Địa chỉ giao hàng!");
+                return;
+            }
+
+            alert(`🎉 Đặt hàng thành công!\nCảm ơn ${name} đã ủng hộ Nông Sản Xanh.\nĐơn hàng sẽ được giao đến: ${address}`);
+
+            // Làm sạch giỏ hàng và lưu lại
+            cart = [];
+            saveCart();
+            renderCart();
+
+            // Xóa trắng ô nhập
+            document.getElementById("order-name").value = "";
+            document.getElementById("order-phone").value = "";
+            document.getElementById("order-address").value = "";
         }
 
 
@@ -802,9 +1065,142 @@
         renderProducts();
 
         renderCart();
+        renderSpecialSections();
+
+    // GỬI YÊU CẦU HỖ TRỢ CHĂM SÓC KHÁCH HÀNG
+        function sendSupport() {
+            const name = document.getElementById("sup-name").value.trim();
+            const phone = document.getElementById("sup-phone").value.trim();
+            const msg = document.getElementById("sup-msg").value.trim();
+
+            if (!name || !phone || !msg) {
+                alert("Vui lòng điền đầy đủ họ tên, số điện thoại và nội dung cần hỗ trợ!");
+                return;
+            }
+
+            alert("Cảm ơn " + name + "! Yêu cầu hỗ trợ của bạn đã được gửi. Nhóm 3 sẽ liên hệ lại với bạn sớm nhất.");
+
+            document.getElementById("sup-name").value = "";
+            document.getElementById("sup-phone").value = "";
+            document.getElementById("sup-msg").value = "";
+        }// HIỂN THỊ SẢN PHẨM BÁN CHẠY & COMBO
+        function renderSpecialSections() {
+            const bestIds = [1, 2, 5];
+            const bestListEl = document.getElementById("best-seller-list");
+            if (bestListEl) {
+                bestListEl.innerHTML = "";
+                bestIds.forEach(id => {
+                    const p = products.find(item => item.id === id);
+                    if (p) {
+                        bestListEl.innerHTML += createCardHTML(p, "🔥 Bán chạy");
+                    }
+                });
+            }
+
+            const comboListEl = document.getElementById("combo-list");
+            if (comboListEl) {
+                comboListEl.innerHTML = "";
+                const combos = products.filter(item => item.tag === "combo");
+                combos.forEach(p => {
+                    comboListEl.innerHTML += createCardHTML(p, "🎁 Combo tiết kiệm");
+                });
+            }
+        }
+
+        function createCardHTML(product, badgeText) {
+            return `
+                <div class="card">
+                    <div class="badge-hot">${badgeText}</div>
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="card-content">
+                        <h3>${product.name}</h3>
+                        <p class="description">${product.description}</p>
+                        <div class="price">${formatMoney(product.price)}/${product.unit}</div>
+                        <button class="trace-btn" onclick="openTraceModal(${product.id})">
+            🔍 Xem nguồn gốc
+        </button>
+        <button class="add-button" onclick="addToCart(${product.id})">+ Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+            `;
+        }
+        </script>
 
     </script>
 
-</body>
+    <!-- CỬA SỔ POPUP TRUY XUẤT NGUỒN GỐC -->
+    <div class="modal-overlay" id="trace-modal" onclick="closeTraceModal()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <h3>🔍 Truy xuất nguồn gốc sản phẩm</h3>
+            <p id="trace-name" style="font-weight:bold; font-size:18px; color:#e65100;"></p>
+            
+            <div class="modal-info">
+                <p><strong>🌱 Vùng trồng/Sản xuất:</strong> <span id="trace-farm"></span></p>
+                <p><strong>📅 Ngày thu hoạch/Đóng gói:</strong> Hôm nay (Tươi mới 100%)</p>
+                <p><strong>🏅 Chứng nhận:</strong> Đạt chuẩn an toàn VietGAP</p>
+                <p><strong>🚚 Đơn vị phân phối:</strong> Nông Sản Xanh - Lớp 11A9</p>
+            </div>
 
+            <img id="trace-qr" src="" alt="Mã QR truy xuất" style="width:130px; height:130px; margin-bottom:10px; border:1px solid #ddd; padding:5px; border-radius:8px;">
+            <p style="font-size:12px; color:#718071; margin-bottom:15px;">Quét mã QR để kiểm tra nhật ký canh tác điện tử</p>
+            
+            <button class="close-modal" onclick="closeTraceModal()">Đóng lại</button>
+        </div>
+    </div>
+// BIẾN LƯU SỐ TIỀN ĐÓNG GÓP QUỸ SỐNG XANH
+        let greenFundContribution = 0;
+
+        function setFundAmount(amount) {
+            greenFundContribution = amount;
+            document.getElementById("fund-status").innerText = `Cảm ơn bạn! Đã chọn đóng góp: ${amount.toLocaleString()}đ vào Quỹ Sống Xanh 🌱`;
+            
+            // Hiệu ứng thông báo nhỏ xíu sinh động khi chọn
+            alert(`Tuyệt vời! Bạn đã thêm ${amount.toLocaleString()}đ vào Quỹ Sống Xanh cùng Nhóm 3 - 11A9.`);
+        }
+    <script>
+        // MỞ POPUP TRUY XUẤT NGUỒN GỐC
+        function openTraceModal(id) {
+            const product = products.find(item => item.id === id);
+            if (!product) return;
+
+            document.getElementById("trace-name").innerText = product.name;
+            
+            let farm = "Hợp tác xã Nông nghiệp sạch Trảng Bàng, Tây Ninh";
+            if (product.category === "local") {
+                farm = "Cơ sở sản xuất đặc sản truyền thống Trảng Bàng, Tây Ninh";
+            } else if (product.category === "fruit") {
+                farm = "Nhà vườn đạt chuẩn VietGAP miền Đông Nam Bộ";
+            }
+            document.getElementById("trace-farm").innerText = farm;
+
+            const qrText = encodeURIComponent("NongSanXanh-11A9-" + product.name);
+            document.getElementById("trace-qr").src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrText}`;
+
+            document.getElementById("trace-modal").style.display = "flex";
+        }
+
+        // ĐÓNG POPUP
+        function closeTraceModal() {
+            document.getElementById("trace-modal").style.display = "none";
+        }
+    </script>
+<!-- KHU VỰC ĐÓNG GÓP QUỸ SỐNG XANH (CSR) -->
+    <section class="green-fund-section" style="max-width: 1200px; margin: 40px auto; padding: 30px; background: #f4f9f1; border-radius: 15px; border: 2px dashed #287b43; text-align: center;">
+        <h2 style="color: #287b43; margin-bottom: 15px;">💚 Quỹ Sống Xanh - Lan Tỏa Giá Trị Việt</h2>
+        <p style="color: #555; max-width: 700px; margin: 0 auto 20px auto; font-size: 15px; line-height: 1.6;">
+            Mỗi sản phẩm đặc sản Trảng Bàng, Tây Ninh bạn chọn không chỉ mang hương vị quê hương mà còn đóng góp trực tiếp vào quỹ trồng rừng và hỗ trợ nông dân sản xuất hữu cơ. Cùng nhóm 3 (11A9) kiến tạo tương lai xanh bền vững!
+        </p>
+        
+        <div style="background: white; display: inline-block; padding: 20px 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+            <p style="font-weight: bold; margin-bottom: 10px; color: #333;">Chọn mức đóng góp tự nguyện cùng đơn hàng:</p>
+            <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 15px; flex-wrap: wrap;">
+                <button onclick="setFundAmount(5000)" class="fund-btn" style="padding: 8px 15px; border: 1px solid #287b43; background: white; color: #287b43; border-radius: 6px; cursor: pointer; font-weight: bold;">5.000đ</button>
+                <button onclick="setFundAmount(10000)" class="fund-btn" style="padding: 8px 15px; border: 1px solid #287b43; background: white; color: #287b43; border-radius: 6px; cursor: pointer; font-weight: bold;">10.000đ</button>
+                <button onclick="setFundAmount(20000)" class="fund-btn" style="padding: 8px 15px; border: 1px solid #287b43; background: white; color: #287b43; border-radius: 6px; cursor: pointer; font-weight: bold;">20.000đ</button>
+                <button onclick="setFundAmount(50000)" class="fund-btn" style="padding: 8px 15px; border: 1px solid #287b43; background: white; color: #287b43; border-radius: 6px; cursor: pointer; font-weight: bold;">50.000đ</button>
+            </div>
+            <p style="font-size: 14px; color: #e65100; font-weight: bold;" id="fund-status">Bạn đã chọn đóng góp: 0đ cho Quỹ Sống Xanh 🌱</p>
+        </div>
+    </section>
+</body>
 </html>
