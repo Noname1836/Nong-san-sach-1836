@@ -18,6 +18,23 @@
             background: #f7f9f3;
             color: #243b2a;
         }
+        /* Hiệu ứng thẻ sản phẩm cao cấp khi rê chuột/chạm tay */
+    .card {
+        transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+        border: 1px solid rgba(40, 123, 67, 0.15) !important;
+        overflow: hidden;
+    }
+    .card:hover {
+        transform: translateY(-8px) !important;
+        box-shadow: 0 15px 30px rgba(40, 123, 67, 0.2) !important;
+        border-color: #287b43 !important;
+    }
+    .card img {
+        transition: transform 0.5s ease !important;
+    }
+    .card:hover img {
+        transform: scale(1.06) !important;
+    }
 
         /* THANH MENU */
         header {
@@ -55,7 +72,20 @@
             border-radius: 25px;
             cursor: pointer;
         }
-
+/* Hiệu ứng Banner chuyển động & Chữ gõ */
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    @keyframes blink {
+        50% { opacity: 0; }
+    }
+    .hero-animated {
+        background: linear-gradient(-45deg, #164a28, #287b43, #38a169, #1e6034);
+        background-size: 400% 400%;
+        animation: gradientBG 8s ease infinite;
+    }
         /* BANNER */
         .hero {
             margin: 25px auto;
@@ -490,6 +520,37 @@
         cursor: pointer;
         font-weight: bold;
     }
+    /* Hiệu ứng thẻ sản phẩm cao cấp khi rê chuột/chạm tay */
+    .card {
+        transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+        border: 1px solid rgba(40, 123, 67, 0.15) !important;
+        overflow: hidden;
+    }
+    .card:hover {
+        transform: translateY(-8px) !important;
+        box-shadow: 0 15px 30px rgba(40, 123, 67, 0.2) !important;
+        border-color: #287b43 !important;
+    }
+    .card img {
+        transition: transform 0.5s ease !important;
+    }
+    .card:hover img {
+        transform: scale(1.06) !important;
+    }
+    /* Hiệu ứng Banner chuyển động & Chữ gõ */
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    @keyframes blink {
+        50% { opacity: 0; }
+    }
+    .hero-animated {
+        background: linear-gradient(-45deg, #164a28, #287b43, #38a169, #1e6034);
+        background-size: 400% 400%;
+        animation: gradientBG 8s ease infinite;
+    }
     </style>
 </head>
 
@@ -513,34 +574,44 @@
         </button>
     </header>
 
-    <!-- BANNER -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Sạch từ nguồn<br>Khỏe mỗi ngày</h1>
+    <!-- HERO BANNER CHUYỂN ĐỘNG & CHỮ GÕ TỰ ĐỘNG -->
+    <section id="home" class="hero-animated" style="padding: 55px 20px; text-align: center; color: white; border-radius: 0 0 28px 28px; margin-bottom: 30px; box-shadow: 0 10px 25px rgba(40, 123, 67, 0.2);">
+        <span style="background: rgba(255,255,255,0.2); padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; letter-spacing: 1px;">🌱 DỰ ÁN KHỞI NGHIỆP XANH - NHÓM 3 (11A9)</span>
+        <h1 style="font-size: 36px; margin: 15px 0 10px 0; text-shadow: 0 2px 8px rgba(0,0,0,0.2);">Nông Sản Sạch Trảng Bàng</h1>
+        <p style="font-size: 18px; min-height: 28px; color: #e0f7ea; font-weight: 500;">
+            <span id="typewriter-text"></span><span style="animation: blink 0.8s infinite;">|</span>
+        </p>
+    </section>
 
-            <p>
-                Mang đến những sản phẩm nông sản tươi ngon,
-                nguồn gốc rõ ràng và thân thiện với môi trường.
-            </p>
+    <script>
+        const phrases = [
+            "Tinh hoa đặc sản quê hương Tây Ninh 🌿",
+            "Xoài sấy dẻo 35k/100g - Mua 3 tặng 1 cực hời 🥭",
+            "Minh bạch 100% nguồn gốc qua mã QR 📱",
+            "Mỗi đơn hàng góp một mầm xanh cho tương lai 💚"
+        ];
+        let phraseIndex = 0, charIndex = 0, isDeleting = false;
+        function typeEffect() {
+            const target = document.getElementById("typewriter-text");
+            if (!target) return;
+            const currentPhrase = phrases[phraseIndex];
+            target.innerText = isDeleting 
+                ? currentPhrase.substring(0, charIndex--) 
+                : currentPhrase.substring(0, charIndex++);
 
-            <button onclick="goToProducts()">
-                Khám phá sản phẩm
-            </button>
-        </div>
-    <section class="features">
-    <div class="feature-item">
-        <div class="feature-icon">🌿</div>
-        <div><h4>100% Nông sản sạch</h4><p>Thu hoạch trực tiếp tại vườn, đạt chuẩn an toàn.</p></div>
-    </div>
-    <div class="feature-item">
-        <div class="feature-icon">🚚</div>
-        <div><h4>Giao nhanh trong ngày</h4><p>Đảm bảo độ tươi ngon nhất khi đến tay bạn.</p></div>
-    </div>
-    <div class="feature-item">
-        <div class="feature-icon">🔄</div>
-        <div><h4>Đổi trả miễn phí</h4><p>Hoàn tiền 100% nếu sản phẩm không đạt chất lượng.</p></div>
-    </div>
-</section>
+            let speed = isDeleting ? 40 : 80;
+            if (!isDeleting && charIndex === currentPhrase.length + 1) {
+                isDeleting = true;
+                speed = 1800;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                speed = 400;
+            }
+            setTimeout(typeEffect, speed);
+        }
+        typeEffect();
+    </script>
     </section>
 
     <!-- SẢN PHẨM -->
@@ -750,14 +821,16 @@
             },
 
 
-            {
-                id: 9,
-                name: "Xoài sấy",
-                category: "local",
-                price: 35000,
-                unit: "gói",
-                description: "Sản phẩm nông sản chế biến.",
-                image: "xoai-say.jpg"
+    {
+        id: 6,
+        name: "Xoài sấy dẻo Trảng Bàng",
+        category: "local",
+        price: 35000,
+        unit: "100g",
+        description: "Xoài sấy dẻo tự nhiên, giữ trọn hương vị chua ngọt đặc trưng, đạt chuẩn an toàn vệ sinh.",
+        image: "xoai-say.jpg"
+    
+               
             },
 
             {
@@ -842,7 +915,33 @@
                 image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=600&q=80",
                 tag: "combo"
             },
-        
+        {
+        id: 20,
+        name: "Combo 'Vị Ngọt Phương Nam' (Xoài sấy & Thanh long)",
+        category: "combo",
+        price: 85000,
+        unit: "Set",
+        description: "Sự kết hợp hoàn hảo giữa Xoài sấy dẻo Trảng Bàng đặc sản và Thanh long tươi mọng nước. Tặng kèm túi vải canvas xanh.",
+        image: "thanh-long-xoai-say.jpg"
+    },
+    {
+        id: 21,
+        name: "Combo 'Đặc Sản Trảng Bàng' (Bánh tráng phơi sương & Muối tôm)",
+        category: "combo",
+        price: 55000,
+        unit: "Set",
+        description: "Bộ đôi huyền thoại ẩm thực Tây Ninh: Bánh tráng phơi sương dẻo dai kết hợp muối tôm chuẩn vị.",
+        image: "banh-trang-muoi-tom.jpg"
+    },
+    {
+        id: 22,
+        name: "Combo 'Nông Sản Sạch Gia Đình' (Khoai lang & Dưa leo VietGAP)",
+        category: "combo",
+        price: 32000,
+        unit: "Set",
+        description: "Thực phẩm tươi sạch mỗi ngày cho bữa ăn gia đình, canh tác theo hướng hữu cơ tại Tây Ninh.",
+        image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=600&q=80"
+    }
         ];
 
         // GIỎ HÀNG
@@ -1147,6 +1246,20 @@ function saveCart() {
         </div>
     </section>
 
+  <!-- POPUP HIỂN THỊ MÃ QR TRUY XUẤT NGUỒN GỐC (Nằm ngoài thẻ script) -->
+    <div id="trace-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000;">
+        <div style="background: white; padding: 30px; border-radius: 15px; text-align: center; max-width: 400px; width: 90%; box-shadow: 0 5px 15px rgba(0,0,0,0.3); position: relative;">
+            <span onclick="closeTraceModal()" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: #888; font-weight: bold;">&times;</span>
+            <h3 style="color: #287b43; margin-bottom: 10px;">🌱 Truy Xuất Nguồn Gốc</h3>
+            <p id="trace-name" style="font-weight: bold; font-size: 18px; color: #333; margin-bottom: 5px;"></p>
+            <p id="trace-farm" style="font-size: 14px; color: #666; margin-bottom: 15px;"></p>
+            <div style="background: #f4f9f1; padding: 15px; border-radius: 10px; display: inline-block; margin-bottom: 15px;">
+                <img id="trace-qr" src="" alt="Mã QR Truy Xuất" style="width: 150px; height: 150px; display: block; margin: 0 auto;">
+            </div>
+            <p style="font-size: 12px; color: #888;">Quét mã QR để kiểm tra quy trình sản xuất sạch từ Trảng Bàng, Tây Ninh.</p>
+        </div>
+    </div>
+
     <!-- TOÀN BỘ HÀM JAVASCRIPT ĐẶT Ở DƯỚI CÙNG -->
     <script>
         // MỞ POPUP TRUY XUẤT NGUỒN GỐC
@@ -1182,6 +1295,50 @@ function saveCart() {
             document.getElementById("fund-status").innerText = `Cảm ơn bạn! Đã chọn đóng góp: ${amount.toLocaleString()}đ vào Quỹ Sống Xanh 🌱`;
             alert(`Tuyệt vời! Bạn đã thêm ${amount.toLocaleString()}đ vào Quỹ Sống Xanh cùng Nhóm 3 - 11A9.`);
         }
+    </script>
+<!-- KHUNG HIỂN THỊ THÔNG BÁO HOẠT ĐỘNG (TOAST) -->
+    <div id="live-toast" style="display: none; position: fixed; bottom: 20px; left: 20px; background: #ffffff; color: #2c3e50; padding: 12px 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); border-left: 5px solid #287b43; font-size: 14px; z-index: 9999; transition: opacity 0.5s ease; max-width: 320px;">
+        🌿 <span id="toast-text">Đang tải thông báo...</span>
+    </div>
+
+    <!-- SCRIPT CHẠY HIỆN THÔNG BÁO TỰ ĐỘNG -->
+    <script>
+        const sampleNotifications = [
+            "🌿 Bạn Lan (Lớp 11A9) vừa đặt mua 1 gói Xoài sấy dẻo 35k!",
+            "💚 Một giáo viên vừa ủng hộ 50.000đ vào Quỹ Sống Xanh 🌱",
+            "📦 Khách hàng tại TP. Tây Ninh vừa đặt 1 phần Muối tôm đặc sản.",
+            "⭐ Bạn Minh Huy vừa đánh giá 5 sao cho sản phẩm Bánh tráng phơi sương.",
+            "🌱 Bạn Hoàng Nam vừa đóng góp 15.000đ vào Quỹ Sống Xanh.",
+            "🛒 Một bạn học sinh vừa thêm Xoài sấy dẻo vào giỏ hàng."
+        ];
+
+        function showLiveToast() {
+            const toast = document.getElementById('live-toast');
+            const toastText = document.getElementById('toast-text');
+            if (!toast || !toastText) return;
+
+            // Chọn ngẫu nhiên một thông báo
+            const randomMsg = sampleNotifications[Math.floor(Math.random() * sampleNotifications.length)];
+            toastText.innerText = randomMsg;
+
+            // Hiển thị toast với hiệu ứng mượt
+            toast.style.display = 'block';
+            toast.style.opacity = '1';
+
+            // Sau 4 giây thì ẩn đi
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 500);
+            }, 4000);
+        }
+
+        // Cứ sau 12 giây sẽ tự động hiện một thông báo mới
+        setInterval(showLiveToast, 12000);
+
+        // Hiển thị lần đầu tiên sau khi mở web 3 giây
+        setTimeout(showLiveToast, 3000);
     </script>
 </body>
 </html>
